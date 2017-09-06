@@ -94,8 +94,7 @@ def get_hours(seconds_since_midnight):
     >>> get_hours(93100)
     1
     """
-    return (seconds_since_midnight // 3600) % 24
-
+    return to_24_hour_clock(seconds_since_midnight // 3600)
 
 
 ### Write your get_minutes function definition here:
@@ -159,7 +158,7 @@ def time_to_utc(utc_offset, time):
     >>> time_to_utc(-1, 23.0)
     0.0
     """
-
+    return to_24_hour_clock(time - utc_offset)
 
 
 def time_from_utc(utc_offset, time):
@@ -184,3 +183,4 @@ def time_from_utc(utc_offset, time):
     >>> time_from_utc(+1, 23.0)
     0.0
     """
+    return to_24_hour_clock(time + utc_offset)
