@@ -50,6 +50,7 @@ def to_float_hours(hours, minutes, seconds):
     >>> to_float_hours(1, 0, 36)
     1.01
     """
+    return hours + (minutes / 60) + (seconds / 3600)
 
 
 
@@ -78,17 +79,64 @@ def to_24_hour_clock(hours):
 
 
 ### Write your get_hours function definition here:
+def get_hours(seconds_since_midnight):
+    """ (int) -> int
 
+    seconds_since_midnight is the number of seconds since
+    midnight. Return the hours since midnight.
+
+    Precondition: seconds_since_midnight >= 0
+
+    >>> get_hours(3800)
+    1
+    >>> get_hours(37245)
+    10
+    >>> get_hours(93100)
+    1
+    """
+    return (seconds_since_midnight // 3600) % 24
 
 
 
 ### Write your get_minutes function definition here:
+def get_minutes(seconds_since_midnight):
+    """ (int) -> int
 
+    seconds_since_midnight is the number of seconds since
+    midnight. Return the minutes since midnight after removing
+    the hours.
+
+    Precondition: seconds_since_midnight >= 0
+
+    >>> get_minutes(3800)
+    3
+    >>> get_minutes(37245)
+    20
+    >>> get_minutes(93100)
+    51
+    """
+    return (seconds_since_midnight % 3600) // 60
 
 
 
 ### Write your get_seconds function definition here:
+def get_seconds(seconds_since_midnight):
+    """ (int) -> int
 
+    seconds_since_midnight is the number of seconds since
+    midnight. Return the seconds since midnight after removing
+    the hours and minutes.
+
+    Precondition: seconds_since_midnight >= 0
+
+    >>> get_seconds(3800)
+    20
+    >>> get_seconds(37245)
+    45
+    >>> get_seconds(93100)
+    40
+    """
+    return (seconds_since_midnight % 3600) % 60
 
 
 
